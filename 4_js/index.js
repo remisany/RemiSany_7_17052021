@@ -4,7 +4,7 @@ const submit = document.querySelector(".main-research__submit");
 submit.addEventListener("click", function () {
     const searchClick = document.querySelector(".main-research__input").value;
 
-    if (search !== "") {
+    if (searchClick !== "") {
         console.log(searchClick);
     }
 });
@@ -26,7 +26,7 @@ input.addEventListener("keydown", function (event) {
         }
 
         if (searchTyped.length >= 3) {
-            console.log(searchTyped);
+            research(searchTyped);
         }
     }
 
@@ -34,8 +34,8 @@ input.addEventListener("keydown", function (event) {
         
         searchTyped = searchTyped.substr(0, searchTyped.length - 1);
         
-        if (searchTyped.length >= 3) {
-            console.log(searchTyped);
+        if (searchTyped.length > 2) {
+            research(searchTyped);
         }
     }
 });
