@@ -11,19 +11,14 @@ submit.addEventListener("click", function () {
 
 //Ecoute les touches
 const input = document.querySelector(".main-research__input");
-var searchTyped;
-var searchTypedArray = [];
-const regSearchTyped = /[a-zA-Zéèê_\s]/g;
 
 input.addEventListener("keyup", function (event) {
 
-    const typed = document.querySelector(".main-research__input").value;
+    const searchTyped = document.querySelector(".main-research__input").value;
 
-    if ((typed != "") && (typed.length > 2)) {
-        searchTyped = typed;
+    if ((searchTyped != "") && (searchTyped.length > 2)) {
         researchName(searchTyped);
     } else {
-        searchTyped = "";
-        initialize();
+        resetDisplay();
     }
 });
