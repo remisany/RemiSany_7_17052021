@@ -1,4 +1,4 @@
-function research(input) {
+function researchName(input) {
 
     for (let i=0; i<recipesName.length; i++) {
         
@@ -6,11 +6,9 @@ function research(input) {
 
         for (let j=0; j<dataName.length; j++) {
             if(dataName[j].toLowerCase().includes(input)) {
-                console.log(recipesName[i]);
-                display(recipesName[i]);
+                displayName(recipesName[i]);
                 break;   
             }
         }
     }
-
 }

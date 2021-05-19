@@ -4,8 +4,26 @@ html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,ifr
 * {
     font-size: 10px;
     border: none;
+    font-family: "Lato", sans-serif;
 }
 
 body {
     margin: 4.2rem 10rem;
+}
+
+h2 {
+    font-size: 1.8rem;
+}
+
+p, span {
+    font-size: 1.2rem;
+    line-height: 1.7rem;
+}
+
+a {
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    &:hover {
+        transform: scale(1.01);
+    }
 }

@@ -15,27 +15,15 @@ var searchTyped;
 var searchTypedArray = [];
 const regSearchTyped = /[a-zA-Zéèê_\s]/g;
 
-input.addEventListener("keydown", function (event) {
+input.addEventListener("keyup", function (event) {
 
-    if ((event.key.match(regSearchTyped)) && (event.key.length === 1)) {
-        
-        if (searchTyped === undefined) {
-            searchTyped = event.key;
-        } else {
-            searchTyped = searchTyped + event.key;
-        }
+    const typed = document.querySelector(".main-research__input").value;
 
-        if (searchTyped.length >= 3) {
-            research(searchTyped);
-        }
-    }
-
-    if ((event.key === "Backspace") && (searchTyped.length != 0)) {
-        
-        searchTyped = searchTyped.substr(0, searchTyped.length - 1);
-        
-        if (searchTyped.length > 2) {
-            research(searchTyped);
-        }
+    if ((typed != "") && (typed.length > 2)) {
+        searchTyped = typed;
+        researchName(searchTyped);
+    } else {
+        searchTyped = "";
+        initialize();
     }
 });
