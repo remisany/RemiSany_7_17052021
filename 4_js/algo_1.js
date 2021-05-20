@@ -27,5 +27,10 @@ function researchName(input) {
     
     for (let i=0; i<searchArray.length; i++) {
         displayName(searchArray[i]);
+        hideError();
+    }
+
+    if(searchArray.length === 0) {
+        displayError();
     }
 }

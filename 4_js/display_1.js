@@ -2,9 +2,31 @@ for (let i=0; i<recipes.length; i++) {
     display(recipes[i]);
 }
 
+//Erreur
+const main = document.querySelector(".recipe__container");
+const error = document.createElement("p");
+error.classList.add("invisible");
+error.classList.add("error");
+error.textContent = "Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.";
+main.appendChild(error);
+
+function displayError() {
+    if (error.classList.contains("invisible")) {
+        error.classList.remove("invisible");
+    };
+}
+
+function hideError() {
+    if (!error.classList.contains("invisible")) {
+        error.classList.add("invisible");
+    }
+}
+
+
+//Affichage recette
 function display (recipeDisplay) {
     const main = document.querySelector(".recipe__container");
-    
+
 	const article = document.createElement("a");
     article.classList.add("recipe");
     article.classList.add(recipeDisplay.id);

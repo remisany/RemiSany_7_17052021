@@ -21,6 +21,8 @@ input.addEventListener("keyup", function (event) {
         }
     } else if (searchTyped[0].length === 0) {
         resetDisplay();
+        hideError();
+        indexMemory = [];
     }
 });
 

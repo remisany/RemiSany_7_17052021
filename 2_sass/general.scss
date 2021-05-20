@@ -31,3 +31,10 @@ a {
 .invisible {
     display: none !important;
 }
+
+.error {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.8rem;
+}
