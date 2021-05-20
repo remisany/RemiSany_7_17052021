@@ -6,11 +6,11 @@ function display (recipeDisplay) {
     const main = document.querySelector(".recipe__container");
     
 	const article = document.createElement("a");
-    article.classList.add("recipe")
+    article.classList.add("recipe");
     article.classList.add(recipeDisplay.id);
 	
     const photo = document.createElement("div");
-    photo.classList.add("recipe__photo")
+    photo.classList.add("recipe__photo");
     article.appendChild(photo);
 
     const info = document.createElement("div");
@@ -72,7 +72,7 @@ const recipeList = document.querySelectorAll(".recipe");
 function clearDisplay() {
     recipeList.forEach(function(recipe) {
         recipe.classList.add("invisible");
-    })
+    });
 }
 
 function resetDisplay () {

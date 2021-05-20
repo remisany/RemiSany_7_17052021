@@ -1,54 +1,31 @@
-let tab = [];
-let array = [];
+//création tableau de recherche "Nom"
+let recipesName = [];
+
+for (let i=0; i<recipes.length; i++) {
+    recipesName.push({id: recipes[i].id, name: recipes[i].name.split(" ")});
+}
+
+//Fonction de recherche à partir du nom
+let indexArray = [];
+let indexMemory = [];
+let searchArray = [];
+let dataName = [];
 
 function researchName(input) {
     clearDisplay();
+    searchArray = [];
 
-    /*
-    for (let i=0; i<recipesName.length; i++) {      
-        let dataName = recipesName[i].name;
+    for (let i=0; i<indexArray.length; i++) {   
+        let dataName = indexArray[i].name;   
         for (let j=0; j<dataName.length; j++) {
-            if(dataName[j].toLowerCase().includes(input)) {
-                tab.push(recipesName[i]);
+            if(dataName[j].toLowerCase().startsWith(input)) {
+                searchArray.push(indexArray[i]);
                 break;   
             }
         }
     }
-
-    for (let i=0; i<tab.length; i++) {
-        displayName(tab[i]);
-    }*/
-}
-
-function researchArrayName(input) {
     
-    for (let i=0; i<tab.length; i++) {
-        array.push(tab[i]);
-        let arrayName = array[i].name;
-        for (let j=0; j<arrayName.length; j++) {
-            if (arrayName[j].toLowerCase().includes(searchTyped[0])) {
-                //arrayName.splice(j,1);
-            }
-        }
+    for (let i=0; i<searchArray.length; i++) {
+        displayName(searchArray[i]);
     }
-
-    console.log(tab);
-    console.log(array);
-    console.log("stop");
-
-/*
-    for (let i=0; i<tab.length; i++) {
-        let tabName = tab[i].name;
-        for (let j=0; j<tabName.length; j++) {
-            if(tabName[j].toLowerCase().includes(input)) {
-                console.log(tab[i]);
-                break;
-            }
-        }
-    }
-
-    for (let i=0; i<tab.length; i++) {
-        displayName(array[i]);
-    }*/
-
 }
