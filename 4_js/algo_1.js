@@ -1,4 +1,4 @@
-//création tableau de recherche "Nom"
+//Création tableau de recherche "Nom"
 let recipesName = [];
 
 for (let i=0; i<recipes.length; i++) {
@@ -6,31 +6,48 @@ for (let i=0; i<recipes.length; i++) {
 }
 
 //Fonction de recherche à partir du nom
-let indexArray = [];
-let indexMemory = [];
-let searchArray = [];
+let nameArray = [];
+let nameMemory = [];
+let searchNameArray = [];
 let dataName = [];
 
 function researchName(input) {
-    clearDisplay();
-    searchArray = [];
+    searchNameArray = [];
 
-    for (let i=0; i<indexArray.length; i++) {   
-        let dataName = indexArray[i].name;   
+    for (let i=0; i<nameArray.length; i++) {   
+        let dataName = nameArray[i].name;   
         for (let j=0; j<dataName.length; j++) {
             if(dataName[j].toLowerCase().startsWith(input)) {
-                searchArray.push(indexArray[i]);
+                searchNameArray.push(nameArray[i]);
                 break;   
             }
         }
     }
     
-    for (let i=0; i<searchArray.length; i++) {
-        displayName(searchArray[i]);
+    for (let i=0; i<searchNameArray.length; i++) {
+        displayName(searchNameArray[i]);
         hideError();
     }
 
-    if(searchArray.length === 0) {
+    if(searchNameArray.length === 0) {
         displayError();
     }
 }
+
+//Création tableau de recherche "ingrédient"
+let recipesIngredient = [];
+
+for (let i=0; i<recipes.length; i++) {
+    let ingredients = recipes[i].ingredients;
+    let ingredientsArray = [];
+    for (let j=0; j<ingredients.length; j++) {
+        ingredientsArray.push(ingredients[j].ingredient);
+    }
+    recipesIngredient.push({id: recipes[i].id, ingredients: ingredientsArray});
+}
+
+//Fonction de recherche à partir de l'ingrédient
+//let ingredientArray = [];
+//let ingredientMemory = [];
+//let searchNameArray = [];
+//let dataName = [];

@@ -8,21 +8,34 @@ input.addEventListener("keyup", function (event) {
     searchTyped = inputSearch.split(" ");
 
     if ((searchTyped.length === 1) && (searchTyped[0].length > 2)) {
-        indexArray = recipesName;
-        indexMemory[0] = recipesName;
+        clearDisplay();
+        //Name
+        nameArray = recipesName;
+        nameMemory[0] = recipesName;
         researchName(searchTyped[0]);
+
+        //Ingredient
+        //ingredientArray = recipesIngredient;
+        //ingredientMemory[0] = recipesIngredient;
+        //researchIngredient(searchTyped[0]);
+
     } else if (searchTyped.length > 1) {
         for (let i=1; i<searchTyped.length; i++) {
-             if(indexMemory[i] === undefined) {
-                indexMemory[i] = searchArray;
+            clearDisplay();
+            //Name
+             if(nameMemory[i] === undefined) {
+                nameMemory[i] = searchNameArray;
             }
-            indexArray = indexMemory[i];
+            nameArray = nameMemory[i];
             researchName(searchTyped[i]);
+
+            //Ingredient
+            //...
         }
     } else if (searchTyped[0].length === 0) {
         resetDisplay();
         hideError();
-        indexMemory = [];
+        nameMemory = [];
     }
 });
 
