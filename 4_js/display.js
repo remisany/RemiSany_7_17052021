@@ -85,8 +85,6 @@ function resetDisplay () {
 
 function displayName (recipeDisplay) {
     for (let i=0; i<recipeList.length; i++) {
-        console.log(recipeList[i].className);
-        console.log(recipeDisplay.id);
         if (recipeList[i].classList.contains(recipeDisplay.id)) {
             recipeList[i].classList.remove("invisible");
             break;
