@@ -20,6 +20,11 @@ input.addEventListener("keyup", function (event) {
         nameMemory[0] = recipesIngredient;
         researchName(searchTyped[0]);
 
+        //Ingredient
+        nameArray = recipesDescription;
+        nameMemory[0] = recipesDescription;
+        researchName(searchTyped[0]);
+
     } else if (searchTyped.length > 1) {
         for (let i=1; i<searchTyped.length; i++) {
             clearDisplay();
@@ -27,7 +32,7 @@ input.addEventListener("keyup", function (event) {
             if(nameMemory[i] === undefined) {
                 nameMemory[i] = searchNameArray;
             }
-            
+
             searchNameArray = [];
             nameArray = nameMemory[i];
             researchName(searchTyped[i]);

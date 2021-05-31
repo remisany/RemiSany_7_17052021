@@ -2,7 +2,7 @@
 let recipesName = [];
 
 for (let i=0; i<recipes.length; i++) {
-    recipesName.push({id: recipes[i].id, name: recipes[i].name.split(" ")});
+    recipesName.push({id: recipes[i].id, text: recipes[i].name.split(" ")});
 }
 
 //Création tableau de recherche "ingrédient"
@@ -17,6 +17,13 @@ for (let i=0; i<recipes.length; i++) {
     recipesIngredient.push({id: recipes[i].id, ingredients: ingredientsArray});
 }
 
+//Création tableau de recherche "Description"
+let recipesDescription = [];
+
+for (let i=0; i<recipes.length; i++) {
+    recipesDescription.push({id: recipes[i].id, text: recipes[i].description.split(" ")});
+}
+
 //Fonction de recherche à partir du nom
 let nameArray = [];
 let nameMemory = [];
@@ -26,8 +33,8 @@ let dataName = [];
 function researchName(input) {
     for (let i=0; i<nameArray.length; i++) {
 
-        if (nameArray[i].name !== undefined) {
-            dataName = nameArray[i].name;
+        if (nameArray[i].text !== undefined) {
+            dataName = nameArray[i].text;
             for (let j=0; j<dataName.length; j++) {
                 if(dataName[j].toLowerCase().startsWith(input)) {
                     searchNameArray.push(nameArray[i]);
