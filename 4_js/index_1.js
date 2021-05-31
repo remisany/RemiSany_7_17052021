@@ -9,28 +9,28 @@ input.addEventListener("keyup", function (event) {
 
     if ((searchTyped.length === 1) && (searchTyped[0].length > 2)) {
         clearDisplay();
+        searchNameArray = [];
         //Name
         nameArray = recipesName;
         nameMemory[0] = recipesName;
         researchName(searchTyped[0]);
 
         //Ingredient
-        //ingredientArray = recipesIngredient;
-        //ingredientMemory[0] = recipesIngredient;
-        //researchIngredient(searchTyped[0]);
+        nameArray = recipesIngredient;
+        nameMemory[0] = recipesIngredient;
+        researchName(searchTyped[0]);
 
     } else if (searchTyped.length > 1) {
         for (let i=1; i<searchTyped.length; i++) {
             clearDisplay();
-            //Name
-             if(nameMemory[i] === undefined) {
+
+            if(nameMemory[i] === undefined) {
                 nameMemory[i] = searchNameArray;
             }
+            
+            searchNameArray = [];
             nameArray = nameMemory[i];
             researchName(searchTyped[i]);
-
-            //Ingredient
-            //...
         }
     } else if (searchTyped[0].length === 0) {
         resetDisplay();

@@ -5,6 +5,18 @@ for (let i=0; i<recipes.length; i++) {
     recipesName.push({id: recipes[i].id, name: recipes[i].name.split(" ")});
 }
 
+//Création tableau de recherche "ingrédient"
+let recipesIngredient = [];
+
+for (let i=0; i<recipes.length; i++) {
+    let ingredients = recipes[i].ingredients;
+    let ingredientsArray = [];
+    for (let j=0; j<ingredients.length; j++) {
+        ingredientsArray.push(ingredients[j].ingredient.split(" "));
+    }
+    recipesIngredient.push({id: recipes[i].id, ingredients: ingredientsArray});
+}
+
 //Fonction de recherche à partir du nom
 let nameArray = [];
 let nameMemory = [];
@@ -12,18 +24,32 @@ let searchNameArray = [];
 let dataName = [];
 
 function researchName(input) {
-    searchNameArray = [];
+    for (let i=0; i<nameArray.length; i++) {
 
-    for (let i=0; i<nameArray.length; i++) {   
-        let dataName = nameArray[i].name;   
-        for (let j=0; j<dataName.length; j++) {
-            if(dataName[j].toLowerCase().startsWith(input)) {
-                searchNameArray.push(nameArray[i]);
-                break;   
+        if (nameArray[i].name !== undefined) {
+            dataName = nameArray[i].name;
+            for (let j=0; j<dataName.length; j++) {
+                if(dataName[j].toLowerCase().startsWith(input)) {
+                    searchNameArray.push(nameArray[i]);
+                    break;   
+                }
+            }
+        }
+        
+        if (nameArray[i].ingredients !== undefined) {
+            dataName = nameArray[i].ingredients;
+            loop : for (let j=0; j<dataName.length; j++) {
+                let dataNameX = dataName[j];
+                for (let k=0; k<dataNameX.length; k++) {
+                    if(dataNameX[k].toLowerCase().startsWith(input)) {
+                        searchNameArray.push(nameArray[i]);
+                        break loop;   
+                    }
+                }
             }
         }
     }
-    
+
     for (let i=0; i<searchNameArray.length; i++) {
         displayName(searchNameArray[i]);
         hideError();
@@ -33,21 +59,3 @@ function researchName(input) {
         displayError();
     }
 }
-
-//Création tableau de recherche "ingrédient"
-let recipesIngredient = [];
-
-for (let i=0; i<recipes.length; i++) {
-    let ingredients = recipes[i].ingredients;
-    let ingredientsArray = [];
-    for (let j=0; j<ingredients.length; j++) {
-        ingredientsArray.push(ingredients[j].ingredient);
-    }
-    recipesIngredient.push({id: recipes[i].id, ingredients: ingredientsArray});
-}
-
-//Fonction de recherche à partir de l'ingrédient
-//let ingredientArray = [];
-//let ingredientMemory = [];
-//let searchNameArray = [];
-//let dataName = [];
