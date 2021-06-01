@@ -65,10 +65,6 @@ p, span {
 
 a {
   cursor: pointer;
-  transition: all 200ms ease-in-out;
-}
-a:hover {
-  transform: scale(1.01);
 }
 
 .invisible {
@@ -85,7 +81,9 @@ a:hover {
 header {
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+header img {
+  align-self: center;
 }
 
 .main-research {
@@ -183,6 +181,58 @@ header {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 6;
   overflow: hidden;
+}
+
+.secondary-research {
+  margin-top: 2rem;
+  display: flex;
+}
+.secondary-research__container {
+  display: block;
+  display: flex;
+  flex-direction: column;
+  padding: 2.5rem 1.5rem;
+  min-width: 17rem;
+  height: 6.9rem;
+  color: #FFF;
+  background-color: #3282F7;
+  border-radius: 0.5rem;
+}
+.secondary-research__input {
+  background-color: #3282F7;
+  color: #FFF;
+  display: none;
+  font-size: 1.8rem;
+  outline-style: none;
+  width: 100%;
+}
+.secondary-research__input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.secondary-research__list {
+  display: none;
+}
+
+.active h2 {
+  display: none;
+}
+.active .secondary-research__container {
+  min-width: 25rem;
+}
+.active .secondary-research__input {
+  display: block;
+}
+.active .secondary-research__list {
+  display: block;
+  background-color: #3282F7;
+  margin: 1.5rem -1.5rem 0 -1.5rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+  column-count: 4;
+}
+.active .secondary-research__list p {
+  font-size: 1.8rem;
+  padding: 0.5rem 0;
 }
 
 /*# sourceMappingURL=style.css.map */
