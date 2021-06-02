@@ -46,10 +46,37 @@
             padding: 0 1.5rem 1.5rem 1.5rem;
             border-radius: 0 0 .5rem .5rem;
             column-count: 4;
-            & p {
+            & a {
+                display: block;
                 font-size: 1.8rem;
                 padding: .5rem 0;
+                &:hover {
+                    color:rgba(#FFF, .5); 
+                }
             }
         }
     }
+}
+
+.tag {
+    display: flex;
+    align-items: center;
+    background-color: $blue;
+    font-size: 1.4rem;
+    color: #FFF;
+    padding: 1rem 2rem;
+    border-radius: .5rem;
+    &__container {
+        margin-top: 2.5rem;
+        margin-top: 1.5rem;
+        display: flex;
+        column-gap: 2rem;
+        row-gap: 2rem;
+        flex-wrap: wrap;
+    }
+}
+
+.fa-times-circle {
+    font-size: 2rem;
+    margin-left: 1.3rem;
 }

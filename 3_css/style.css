@@ -230,9 +230,36 @@ header img {
   border-radius: 0 0 0.5rem 0.5rem;
   column-count: 4;
 }
-.active .secondary-research__list p {
+.active .secondary-research__list a {
+  display: block;
   font-size: 1.8rem;
   padding: 0.5rem 0;
+}
+.active .secondary-research__list a:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  background-color: #3282F7;
+  font-size: 1.4rem;
+  color: #FFF;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+}
+.tag__container {
+  margin-top: 2.5rem;
+  margin-top: 1.5rem;
+  display: flex;
+  column-gap: 2rem;
+  row-gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.fa-times-circle {
+  font-size: 2rem;
+  margin-left: 1.3rem;
 }
 
 /*# sourceMappingURL=style.css.map */

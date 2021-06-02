@@ -12,17 +12,14 @@ input.addEventListener("keyup", function (event) {
         resultArray = [];
         //Name
         searchArray = recipesName;
-        searchMemory[0] = recipesName;
         research(searchTyped[0]);
 
         //Ingredient
         searchArray = recipesIngredient;
-        searchMemory[0] = recipesIngredient;
         research(searchTyped[0]);
 
-        //Ingredient
+        //Description
         searchArray = recipesDescription;
-        searchMemory[0] = recipesDescription;
         research(searchTyped[0]);
 
     } else if (searchTyped.length > 1) {

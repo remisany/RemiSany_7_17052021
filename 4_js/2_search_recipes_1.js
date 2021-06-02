@@ -6,13 +6,13 @@ for (let i=0; i<recipes.length; i++) {
 
 //Création tableau de recherche "ingrédient"
 let recipesIngredient = [];
-let listIngredientArray  = [];
+let listIngredient = [];
 for (let i=0; i<recipes.length; i++) {
     let ingredients = recipes[i].ingredients;
     let ingredientsArray = [];
     for (let j=0; j<ingredients.length; j++) {
         ingredientsArray.push(ingredients[j].ingredient.split(" "));
-        listIngredientArray.push(ingredients[j].ingredient)
+        listIngredient.push(ingredients[j].ingredient)
     }
     recipesIngredient.push({id: recipes[i].id, ingredients: ingredientsArray});
 }
