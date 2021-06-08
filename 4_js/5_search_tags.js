@@ -1,19 +1,39 @@
-//Fonction de recherche
-let searchListArray = [];
-let searchListMemory = [];
-let resultListArray = [];
+let inputTag = [];
 
-function researchList(input) {
-    const ingredients = document.querySelectorAll(".secondary-research__list a")
-    console.log(ingredients);
-    for (let i=0; i<searchListArray.length; i++) {
-        let listIndex = searchListArray[i];
-        for (let j=0; j<listIndex.length; j++) {
-            if(listIndex[j].toLowerCase().startsWith(input)) {
-                ingredients[i].classList.remove("invisible");
-                resultListArray.push(searchListArray[i]);
-                break;   
+function secondaryResearch() {
+    inputTag = document.querySelectorAll(".tag");
+
+    for (let i=0; i<inputTag.length; i++) {
+        hideRecipes();
+        searchArray = [];
+
+        for (let j=0; j<searchMemory.length; j++) {
+            searchMemoryIngredients = searchMemory[j].ingredients;
+            for (let k=0; k<searchMemoryIngredients.length; k++) {
+                if (searchMemoryIngredients[k].ingredient === inputTag[i].textContent) {
+                    searchArray.push(searchMemory[j]);
+                    break;
+                }
             }
         }
+
+        for (let i=0; i<searchArray.length; i++) {
+            displayRecipes(searchArray[i]);
+        }
+    
+        searchMemory = searchArray;
+    }
+
+    secondaryMemory = searchArray;
+
+    if (inputTag.length === 0) {
+        searchArray = [];
+        secondaryMemory = [];
+        resetDisplay();
+        if (mainMemory == "") {
+            resetList();
+        }
+    } else {
+        updateList();
     }
 }

@@ -67,12 +67,16 @@ a {
   cursor: pointer;
 }
 
+.visible {
+  display: block !important;
+}
+
 .invisible {
   display: none !important;
 }
 
 .error {
-  display: block;
+  display: none;
   margin-left: auto;
   margin-right: auto;
   font-size: 1.8rem;
@@ -116,6 +120,7 @@ header img {
 }
 
 .recipe {
+  display: none;
   width: 32%;
 }
 .recipe__container {
@@ -198,6 +203,9 @@ header img {
   background-color: #3282F7;
   border-radius: 0.5rem;
 }
+.secondary-research__container a {
+  font-size: 1.8rem;
+}
 .secondary-research__input {
   background-color: #3282F7;
   color: #FFF;
@@ -213,7 +221,7 @@ header img {
   display: none;
 }
 
-.active h2 {
+.active a {
   display: none;
 }
 .active .secondary-research__container {

@@ -1,67 +1,71 @@
-//Création tableau de recherche "Nom"
-let recipesName = [];
-for (let i=0; i<recipes.length; i++) {
-    recipesName.push({id: recipes[i].id, text: recipes[i].name.split(" ")});
-}
+let inputSearch = [];
 
-//Création tableau de recherche "ingrédient"
-let recipesIngredient = [];
-let listIngredient = [];
-for (let i=0; i<recipes.length; i++) {
-    let ingredients = recipes[i].ingredients;
-    let ingredientsArray = [];
-    for (let j=0; j<ingredients.length; j++) {
-        ingredientsArray.push(ingredients[j].ingredient.split(" "));
-        listIngredient.push(ingredients[j].ingredient)
-    }
-    recipesIngredient.push({id: recipes[i].id, ingredients: ingredientsArray});
-}
+//Fonction de recherche principale
+function mainResearch() {
 
-//Création tableau de recherche "Description"
-let recipesDescription = [];
-for (let i=0; i<recipes.length; i++) {
-    recipesDescription.push({id: recipes[i].id, text: recipes[i].description.split(" ")});
-}
+    inputSearch = document.querySelector(".main-research__input").value;
+    let input = inputSearch.split(" ")
 
-//Fonction de recherche
-let searchArray = [];
-let searchMemory = [];
-let resultArray = [];
-let dataName = [];
-
-function research(input) {
-    for (let i=0; i<searchArray.length; i++) {
-
-        if (searchArray[i].text !== undefined) {
-            dataName = searchArray[i].text;
-            for (let j=0; j<dataName.length; j++) {
-                if(dataName[j].toLowerCase().startsWith(input)) {
-                    resultArray.push(searchArray[i]);
+    for (let i=0; i<input.length; i++) {
+        //Cacher recette
+        hideRecipes();
+        
+        searchArray = [];
+  
+        for (let j=0; j<searchMemory.length; j++) {
+            //Recherche par le nom
+            searchMemoryName = searchMemory[j].name.split(" ");
+            for (let k=0; k<searchMemoryName.length; k++) {
+                if(searchMemoryName[k].toLowerCase().startsWith(input[i].toLowerCase())) {
+                    searchArray.push(searchMemory[j]);
                     break;   
                 }
             }
-        }
-        
-        if (searchArray[i].ingredients !== undefined) {
-            dataName = searchArray[i].ingredients;
-            loop : for (let j=0; j<dataName.length; j++) {
-                let dataNameX = dataName[j];
-                for (let k=0; k<dataNameX.length; k++) {
-                    if(dataNameX[k].toLowerCase().startsWith(input)) {
-                        resultArray.push(searchArray[i]);
+    
+            //Recherche par la description
+            searchMemoryDescription = searchMemory[j].description.split(" ");
+            for (let k=0; k<searchMemoryDescription.length; k++) {
+                if(searchMemoryDescription[k].toLowerCase().startsWith(input[i].toLowerCase())) {
+                    searchArray.push(searchMemory[j]);
+                    break;   
+                }
+            }
+    
+            //Recherche par les ingrédients
+            searchMemoryIngredients = searchMemory[j].ingredients;
+    
+            loop : for (let k=0; k<searchMemoryIngredients.length; k++) {
+                let searchMemoryIngredient = searchMemoryIngredients[k].ingredient.split(" ");
+                for (let l=0; l<searchMemoryIngredient.length; l++) {
+                    if(searchMemoryIngredient[l].toLowerCase().startsWith(input[i].toLowerCase())) {
+                        searchArray.push(searchMemory[j]);
                         break loop;   
                     }
                 }
             }
         }
+    
+        //Suppression doublon
+        searchArray = new Set(searchArray);
+        searchArray = [...searchArray];
+    
+        for (let i=0; i<searchArray.length; i++) {
+            hideError();
+            displayRecipes(searchArray[i]);
+        }
+
+        if (input.length > 1) {
+            searchMemory = searchArray;
+        }
     }
 
-    for (let i=0; i<resultArray.length; i++) {
-        displayName(resultArray[i]);
-        hideError();
-    }
-
-    if(resultArray.length === 0) {
+    if(searchArray.length === 0) {
         displayError();
+        mainMemory = [];
+        hideList();
+    } else {
+        mainMemory = searchArray;
+        checkMemory();
+        updateList();
     }
-}
+} 

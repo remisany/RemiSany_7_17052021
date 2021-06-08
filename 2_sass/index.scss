@@ -36,6 +36,7 @@ header {
 }
 
 .recipe {
+    display: none;
     width: 32%;  
     &__container {
         display: flex;

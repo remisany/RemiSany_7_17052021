@@ -11,6 +11,9 @@
         color: #FFF;
         background-color: $blue;
         border-radius: .5rem;
+        & a {
+            font-size: 1.8rem;
+        }
     }        
     &__input {
         background-color: $blue;
@@ -29,7 +32,7 @@
 }
 
 .active {
-    & h2 {
+    & a {
         display: none;
     }
     & .secondary-research {

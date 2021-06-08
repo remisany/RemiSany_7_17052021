@@ -1,34 +1,14 @@
+//Creation des recettes
 for (let i=0; i<recipes.length; i++) {
-    display(recipes[i]);
+    creationRecipes(recipes[i]);
 }
 
-//Erreur
-const main = document.querySelector(".recipe__container");
-const error = document.createElement("p");
-error.classList.add("invisible");
-error.classList.add("error");
-error.textContent = "Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.";
-main.appendChild(error);
-
-function displayError() {
-    if (error.classList.contains("invisible")) {
-        error.classList.remove("invisible");
-    };
-}
-
-function hideError() {
-    if (!error.classList.contains("invisible")) {
-        error.classList.add("invisible");
-    }
-}
-
-
-//Affichage recette
-function display (recipeDisplay) {
+function creationRecipes(recipeDisplay) {
     const main = document.querySelector(".recipe__container");
 
 	const article = document.createElement("a");
     article.classList.add("recipe");
+    article.classList.add("visible");
     article.classList.add(recipeDisplay.id);
 	
     const photo = document.createElement("div");
@@ -89,27 +69,57 @@ function display (recipeDisplay) {
     main.appendChild(article);
 }
 
-const recipeList = document.querySelectorAll(".recipe");
+//Creation Erreur
+const main = document.querySelector(".recipe__container");
+const error = document.createElement("p");
+error.classList.add("error");
+error.textContent = "Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.";
+main.appendChild(error);
 
-function clearDisplay() {
-    recipeList.forEach(function(recipe) {
-        recipe.classList.add("invisible");
-    });
-}
 
-function resetDisplay () {
+let recipeList = document.querySelectorAll(".visible");
+
+//Rendre invisible les recettes
+function hideRecipes() {
     for (let i=0; i<recipeList.length; i++) {
-        if (recipeList[i].classList.contains("invisible")) {
-            recipeList[i].classList.remove("invisible");
-        }
+        recipeList[i].classList.remove("visible") 
     }
 }
 
-function displayName (recipeDisplay) {
-    for (let i=0; i<recipeList.length; i++) {
+//Afficher recette suite à la recherche
+function displayRecipes(recipeDisplay) {
+     for (let i=0; i<recipeList.length; i++) {
         if (recipeList[i].classList.contains(recipeDisplay.id)) {
-            recipeList[i].classList.remove("invisible");
-            break;
+            recipeList[i].classList.add("visible");
         }
     }
+}
+
+
+//Remise à 0 de l'affichage recette (afficher toutes les recettes)
+const resetRecipes = document.querySelectorAll(".visible");
+
+function resetDisplay() {
+    for (let i=0; i<recipes.length; i++) {
+        resetRecipes[i].classList.add("visible");
+    }
+
+    if (secondaryMemory != "") {
+        searchMemory = recipes;
+        secondaryResearch();
+    } else if (mainMemory != "") {
+        searchMemory = recipes;
+        mainResearch();
+    }
+}
+
+
+//Afficher erreur
+function displayError() {
+    error.classList.add("visible");
+}
+
+//Masquer erreur
+function hideError() {
+    error.classList.remove("visible");
 }
