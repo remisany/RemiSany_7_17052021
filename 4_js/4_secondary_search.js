@@ -1,5 +1,7 @@
 const ingredientContainer = document.querySelector(".secondary-research__ingredients");
 const applianceContainer = document.querySelector(".secondary-research__appliances");
+const ustensilContainer = document.querySelector(".secondary-research__ustensils");
+
 const inputs = document.querySelectorAll(".secondary-research__input");
 const tagContainer = document.querySelector(".tag__container");
 
@@ -7,19 +9,30 @@ const tagContainer = document.querySelector(".tag__container");
 //Création tableau de recherche "ingrédient"
 let listIngredient = [];
 let listAppliance = [];
+let listUstensil = [];
+
 for (let i=0; i<recipes.length; i++) {
     let ingredients = recipes[i].ingredients;
     for (let j=0; j<ingredients.length; j++) {
         listIngredient.push(ingredients[j].ingredient);
     }
+
     listAppliance.push(recipes[i].appliance);
+
+    let ustensils = recipes[i].ustensils;
+    for (let j=0; j<ustensils.length; j++) {
+        listUstensil.push(ustensils[j]);
+    }
 }
 //Suppression doublon
 listIngredient = new Set(listIngredient);
 listIngredient = [...listIngredient];
 
-listAppliance = new Set(listAppliance );
-listAppliance  = [...listAppliance ];
+listAppliance = new Set(listAppliance);
+listAppliance  = [...listAppliance];
+
+listUstensil = new Set(listUstensil);
+listUstensil  = [...listUstensil];
 
 //Creation de la liste des ingrédients
 creationListIngredient();
@@ -52,6 +65,22 @@ function creationListAppliance() {
         divListAppliance.appendChild(appliance);
     }
     applianceContainer.appendChild(divListAppliance); 
+}
+
+//USTENSIL
+creationListUstensil();
+function creationListUstensil() {
+    const divListUstensil = document.createElement("div");
+    divListUstensil.classList.add("secondary-research__list");
+    divListUstensil.classList.add("secondary-research__ustensils");
+
+    for (let i=0; i<listUstensil.length; i++) {
+        let ustensil = document.createElement("a");
+        ustensil.id = i;
+        ustensil.textContent = listAppliance[i];
+        divListUstensil.appendChild(ustensil);
+    }
+    ustensilContainer.appendChild(divListUstensil); 
 }
 
 //TAGSCONTAINER

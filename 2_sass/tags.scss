@@ -1,6 +1,7 @@
 .secondary-research {
     margin-top: 2rem;
     display: flex;
+    column-gap: 2rem;
     &__container {
         display: block;
         display: flex;
@@ -34,6 +35,10 @@
     
     &__appliances {
         background-color: $green;
+    }
+
+    &__ustensils {
+        background-color: $orange;
     }
 }
 

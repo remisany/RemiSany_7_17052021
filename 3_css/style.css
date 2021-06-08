@@ -191,6 +191,7 @@ header img {
 .secondary-research {
   margin-top: 2rem;
   display: flex;
+  column-gap: 2rem;
 }
 .secondary-research__container {
   display: block;
@@ -223,6 +224,9 @@ header img {
 }
 .secondary-research__appliances {
   background-color: #68D9A4;
+}
+.secondary-research__ustensils {
+  background-color: #ED6454;
 }
 
 .active a {
