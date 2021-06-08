@@ -200,14 +200,12 @@ header img {
   min-width: 17rem;
   height: 6.9rem;
   color: #FFF;
-  background-color: #3282F7;
   border-radius: 0.5rem;
 }
 .secondary-research__container a {
   font-size: 1.8rem;
 }
 .secondary-research__input {
-  background-color: #3282F7;
   color: #FFF;
   display: none;
   font-size: 1.8rem;
@@ -219,6 +217,12 @@ header img {
 }
 .secondary-research__list {
   display: none;
+}
+.secondary-research__ingredients {
+  background-color: #3282F7;
+}
+.secondary-research__appliances {
+  background-color: #68D9A4;
 }
 
 .active a {
@@ -232,7 +236,6 @@ header img {
 }
 .active .secondary-research__list {
   display: block;
-  background-color: #3282F7;
   margin: 1.5rem -1.5rem 0 -1.5rem;
   padding: 0 1.5rem 1.5rem 1.5rem;
   border-radius: 0 0 0.5rem 0.5rem;

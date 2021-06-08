@@ -2,7 +2,6 @@ let inputSearch = [];
 
 //Fonction de recherche principale
 function mainResearch() {
-
     inputSearch = document.querySelector(".main-research__input").value;
     let input = inputSearch.split(" ")
 

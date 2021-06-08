@@ -9,14 +9,12 @@
         min-width: 17rem;
         height: 6.9rem;
         color: #FFF;
-        background-color: $blue;
         border-radius: .5rem;
         & a {
             font-size: 1.8rem;
         }
     }        
     &__input {
-        background-color: $blue;
         color: #FFF;
         display: none;
         font-size: 1.8rem;
@@ -28,6 +26,14 @@
     }
     &__list {
         display: none;
+    }
+
+    &__ingredients {
+        background-color: $blue;
+    }
+    
+    &__appliances {
+        background-color: $green;
     }
 }
 
@@ -44,7 +50,6 @@
         }
         &__list {
             display: block;
-            background-color: $blue;
             margin: 1.5rem -1.5rem 0 -1.5rem;
             padding: 0 1.5rem 1.5rem 1.5rem;
             border-radius: 0 0 .5rem .5rem;
@@ -83,3 +88,4 @@
     font-size: 2rem;
     margin-left: 1.3rem;
 }
+
