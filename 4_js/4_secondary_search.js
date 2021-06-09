@@ -91,19 +91,21 @@ const typeTag = document.querySelectorAll(".secondary-research__title")
 let index;
 let tags = document.querySelectorAll(".secondary-research__list a");
 let tagsAll = document.querySelectorAll(".secondary-research__list a");
+let tagList = [];
 
 for (let i=0; i<typeTag.length; i++) {
     typeTag[i].addEventListener("click", function() {
         list[i].classList.add("active");
         index = i;
 
-        //tags = document.querySelectorAll(".secondary-research__list a");
         tags = this.parentNode.lastChild.querySelectorAll("a");
 
         for (let i=0; i<tags.length; i++) {
             tags[i].addEventListener("click", addTag)
         }
 
+        tagList = list[index].lastChild.querySelectorAll("a:not(.invisible)");
+        
         for (let i=0; i<inputs.length; i++) {
             inputs[i].addEventListener("keyup", searchList)
         }
@@ -122,7 +124,7 @@ for (let i=0; i<typeTag.length; i++) {
             }
         }
     });
-} 
+}
 
 //Fermeture list (tagsContainer)
 function closeList() {
@@ -261,9 +263,7 @@ let tagListArray = [];
 function searchList() {
     searchListArray = [];
     tagListArray = [];
-
-    let tagList = list[index].lastChild.querySelectorAll("a");
-        
+    
     for (let i=0; i<tagList.length; i++) {
         tagListArray.push(tagList[i].textContent.split(" "));
     }
@@ -296,27 +296,4 @@ function searchList() {
             searchListArray = [];
         }
     }
-
-    /*
-        for (let j=0; j<tagListArray.length; j++) {
-            let searchListTag = tagListArray[j];
-            for (let k=0; k<searchListTag.length; k++) {
-                if (searchListTag[k].toLowerCase().startsWith(input[i].toLowerCase())){
-                    console.log(searchListTag);
-                    searchListArray.push(searchListTag);
-                    break;
-                }
-            }
-        }
-
-        if (input.length > 1) {
-            tagListArray = searchListArray;
-        }
-    
-        if (input.length === 0) {
-            resetList();
-        }
-
-        console.log(searchListArray);
-    */
 }
