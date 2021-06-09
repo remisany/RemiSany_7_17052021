@@ -115,6 +115,10 @@ for (let i=0; i<typeTag.length; i++) {
         for (let j=0; j<list.length; j++) {
             if (j != index) {
                 list[j].classList.remove("active");
+                inputs[index].value = "";
+
+                checkMemory();
+                secondaryResearch();
             }
         }
     });
@@ -268,26 +272,31 @@ function searchList() {
     let input = inputList.split(" ");
 
     for (let i=0; i<input.length; i++) {
-        console.log(tagListArray.length);
+        hideList();
         for (let j=0; j<tagListArray.length; j++) {
-            console.log("ok1");
             let searchListTag = tagListArray[j];
             for (let k=0; k<searchListTag.length; k++) {
-                console.log("ok2");
                 if (searchListTag[k].toLowerCase().startsWith(input[i].toLowerCase())){
-                    console.log("ok3");
                     searchListArray.push(searchListTag);
                     break;
                 }
             }
+
+            for (let i=0; i<searchListArray.length; i++) {
+                for (let j=0; j<tagList.length; j++) {
+                    if (tagList[j].textContent === searchListArray[i].join(" ")) {
+                        tagList[j].classList.remove("invisible")
+                    };
+                }
+            }
         }
 
-        tagListArray = searchListArray;
-        //tagListArray = searchListArray;
-        /*if (input.length > 1) {
+        if (input.length > 1) {
             tagListArray = searchListArray;
-        }*/
+            searchListArray = [];
+        }
     }
+
     /*
         for (let j=0; j<tagListArray.length; j++) {
             let searchListTag = tagListArray[j];
