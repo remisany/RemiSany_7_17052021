@@ -2,6 +2,9 @@
     margin-top: 2rem;
     display: flex;
     column-gap: 2rem;
+    &__title {
+        position: relative;
+    }
     &__container {
         display: block;
         display: flex;
@@ -15,12 +18,16 @@
             font-size: 1.8rem;
         }
     }        
-    &__input {
-        color: #FFF;
-        display: none;
+    &__input{
         font-size: 1.8rem;
-        outline-style: none;
         width: 100%;
+        display: none;
+        outline-style: none;
+        color: #FFF;
+        &__container {
+            position: relative;
+            display: none;
+        }
         &::placeholder {
             color: rgba(#FFF, .5);
         }
@@ -42,6 +49,22 @@
     }
 }
 
+.fas {
+    font-size: 1.6rem;
+}
+
+.fa-chevron-up {
+    position: absolute;
+    top: .5rem;
+    right: 2.8rem;
+}
+
+.fa-chevron-down {
+    position: absolute;
+    top: .5rem;
+    right: 1.8rem;
+}
+
 .active {
     & a {
         display: none;
@@ -52,6 +75,9 @@
         }
         &__input {
             display: block;
+            &__container {
+                display: block;
+            }
         }
         &__list {
             display: block;

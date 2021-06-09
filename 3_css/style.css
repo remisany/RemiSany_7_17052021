@@ -193,6 +193,9 @@ header img {
   display: flex;
   column-gap: 2rem;
 }
+.secondary-research__title {
+  position: relative;
+}
 .secondary-research__container {
   display: block;
   display: flex;
@@ -207,11 +210,15 @@ header img {
   font-size: 1.8rem;
 }
 .secondary-research__input {
-  color: #FFF;
-  display: none;
   font-size: 1.8rem;
-  outline-style: none;
   width: 100%;
+  display: none;
+  outline-style: none;
+  color: #FFF;
+}
+.secondary-research__input__container {
+  position: relative;
+  display: none;
 }
 .secondary-research__input::placeholder {
   color: rgba(255, 255, 255, 0.5);
@@ -229,6 +236,22 @@ header img {
   background-color: #ED6454;
 }
 
+.fas {
+  font-size: 1.6rem;
+}
+
+.fa-chevron-up {
+  position: absolute;
+  top: 0.5rem;
+  right: 2.8rem;
+}
+
+.fa-chevron-down {
+  position: absolute;
+  top: 0.5rem;
+  right: 1.8rem;
+}
+
 .active a {
   display: none;
 }
@@ -236,6 +259,9 @@ header img {
   min-width: 25rem;
 }
 .active .secondary-research__input {
+  display: block;
+}
+.active .secondary-research__input__container {
   display: block;
 }
 .active .secondary-research__list {
