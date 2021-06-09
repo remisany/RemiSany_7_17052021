@@ -76,7 +76,6 @@ error.classList.add("error");
 error.textContent = "Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.";
 main.appendChild(error);
 
-
 let recipeList = document.querySelectorAll(".visible");
 
 //Rendre invisible les recettes
@@ -94,7 +93,6 @@ function displayRecipes(recipeDisplay) {
         }
     }
 }
-
 
 //Remise à 0 de l'affichage recette (afficher toutes les recettes)
 const resetRecipes = document.querySelectorAll(".visible");

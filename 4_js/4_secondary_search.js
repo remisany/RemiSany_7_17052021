@@ -77,7 +77,7 @@ function creationListUstensil() {
     for (let i=0; i<listUstensil.length; i++) {
         let ustensil = document.createElement("a");
         ustensil.id = i;
-        ustensil.textContent = listAppliance[i];
+        ustensil.textContent = listUstensil[i];
         divListUstensil.appendChild(ustensil);
     }
     ustensilContainer.appendChild(divListUstensil); 
@@ -89,7 +89,8 @@ const list = document.querySelectorAll(".secondary-research__container");
 const typeTag = document.querySelectorAll(".secondary-research__title")
 
 let index;
-let tags;
+let tags = document.querySelectorAll(".secondary-research__list a");
+let tagsAll = document.querySelectorAll(".secondary-research__list a");
 
 for (let i=0; i<typeTag.length; i++) {
     typeTag[i].addEventListener("click", function() {
@@ -103,8 +104,19 @@ for (let i=0; i<typeTag.length; i++) {
             tags[i].addEventListener("click", addTag)
         }
 
-        searchList();
-        click();
+        for (let i=0; i<inputs.length; i++) {
+            inputs[i].addEventListener("keyup", searchList)
+        }
+
+        //Ecoute d'un click sur la page
+        document.addEventListener("click", click);
+
+        //Fermeture de la liste ouverte précédemment
+        for (let j=0; j<list.length; j++) {
+            if (j != index) {
+                list[j].classList.remove("active");
+            }
+        }
     });
 } 
 
@@ -120,27 +132,45 @@ function closeList() {
 //MISE A JOUR DE LA LISTE
 //Masquer les ingrédients de la liste
 function hideList() {
-    for (let i=0; i<tags.length; i++) {
-        tags[i].classList.add("invisible");
+    for (let i=0; i<tagsAll.length; i++) {
+        tagsAll[i].classList.add("invisible");
     }
 }
 
 //Remise à 0 de la liste (afficher tous les ingrédients)
 function resetList() {
-    for (let i=0; i<tags.length; i++) {
-        tags[i].classList.remove("invisible");
+    for (let i=0; i<tagsAll.length; i++) {
+        tagsAll[i].classList.remove("invisible");
     }
 }
 
 //Mise à jour des ingrédients de la liste
 function updateList() {
     hideList();
+
     for (let i=0; i<searchMemory.length; i++) {
-        let updateList = searchMemory[i].ingredients;
-        for (let j=0; j<updateList.length; j++) {
-            for (let k=0; k<tags.length; k++) {
-                if (tags[k].textContent === updateList[j].ingredient) {
-                    tags[k].classList.remove("invisible");
+
+        let updateListIngredient = searchMemory[i].ingredients;
+        for (let j=0; j<updateListIngredient.length; j++) {
+            for (let k=0; k<tagsAll.length; k++) {
+                if (tagsAll[k].textContent === updateListIngredient[j].ingredient) {
+                    tagsAll[k].classList.remove("invisible");
+                    break;
+                }
+            }
+        }
+
+        for (let k=0; k<tagsAll.length; k++) {
+            if (tagsAll[k].textContent === searchMemory[i].appliance) {
+                tagsAll[k].classList.remove("invisible");
+            }
+        }
+
+        let updateListUstensils = searchMemory[i].ustensils;
+        for (let j=0; j<updateListUstensils .length; j++) {
+            for (let k=0; k<tagsAll.length; k++) {
+                if (tagsAll[k].textContent === updateListUstensils[j]) {
+                    tagsAll[k].classList.remove("invisible");
                     break;
                 }
             }
@@ -167,6 +197,14 @@ function addTag() {
     tag.textContent = this.textContent;
     tag.classList.add("tag");
     tag.id = this.id;
+
+    if (this.parentNode.classList.contains("secondary-research__ingredients")) {
+        tag.classList.add("ingredient");
+    } else if (this.parentNode.classList.contains("secondary-research__appliances")) {
+        tag.classList.add("appliance");
+    } else {
+        tag.classList.add("ustensil");
+    }
 
     let cross = document.createElement("a");
     cross.classList.add("far");
@@ -205,46 +243,71 @@ function deleteTag() {
 }
 
 //FERMETURE SI CLICK SUR PAGE
-function click() {
-    document.addEventListener("click", function(event) {
-        if (!list[index].contains(event.target)) {
-            closeList();
-        }
-    });
+function click(event) {
+    if (!list[index].contains(event.target)) {
+        closeList();
+    }
 }
 
 //RECHERCHE DANS LISTE
 //Rechercher dans liste ingrédient
-function searchList() {
-    let tagList = document.querySelectorAll(".secondary-research__list a:not(.invisible)");
-    let searchListArray = [];
+let searchListArray = [];
+let tagListArray = [];
 
+function searchList() {
+    searchListArray = [];
+    tagListArray = [];
+
+    let tagList = list[index].lastChild.querySelectorAll("a");
+        
     for (let i=0; i<tagList.length; i++) {
-        searchListArray.push(tagList[i].textContent.split(" "));
+        tagListArray.push(tagList[i].textContent.split(" "));
     }
 
-    for (let i=0; i<inputs.length; i++) {
-        inputs[i].addEventListener("keyup", function () {
-            let inputList = document.querySelector(".secondary-research__input").value;
-            let input = inputList.split(" ");
+    let inputList = list[index].querySelector("input").value;
+    let input = inputList.split(" ");
 
-            for (let i=0; i<input.length; i++) {
-                hideList();
- 
-                for (let j=0; j<searchListArray.length; j++) {
-                    let searchListTag = searchListArray[j];
-                    for (let k=0; k<searchListTag.length; k++) {
-                        if (searchListTag[k].toLowerCase().startsWith(input[i].toLowerCase())){
-                            tagList[j].classList.remove("invisible");
-                            break;
-                        }
-                    }
+    for (let i=0; i<input.length; i++) {
+        console.log(tagListArray.length);
+        for (let j=0; j<tagListArray.length; j++) {
+            console.log("ok1");
+            let searchListTag = tagListArray[j];
+            for (let k=0; k<searchListTag.length; k++) {
+                console.log("ok2");
+                if (searchListTag[k].toLowerCase().startsWith(input[i].toLowerCase())){
+                    console.log("ok3");
+                    searchListArray.push(searchListTag);
+                    break;
                 }
             }
-    
-            if (input.length === 0) {
-                resetList();
-            }
-        });
+        }
+
+        tagListArray = searchListArray;
+        //tagListArray = searchListArray;
+        /*if (input.length > 1) {
+            tagListArray = searchListArray;
+        }*/
     }
+    /*
+        for (let j=0; j<tagListArray.length; j++) {
+            let searchListTag = tagListArray[j];
+            for (let k=0; k<searchListTag.length; k++) {
+                if (searchListTag[k].toLowerCase().startsWith(input[i].toLowerCase())){
+                    console.log(searchListTag);
+                    searchListArray.push(searchListTag);
+                    break;
+                }
+            }
+        }
+
+        if (input.length > 1) {
+            tagListArray = searchListArray;
+        }
+    
+        if (input.length === 0) {
+            resetList();
+        }
+
+        console.log(searchListArray);
+    */
 }
