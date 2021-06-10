@@ -7,7 +7,7 @@ let searchMemory = [];
 let mainMemory = [];
 let secondaryMemory = [];
 
-input.addEventListener("keyup", function (event) {
+input.addEventListener("keyup", function () {
 
     inputSearch = document.querySelector(".main-research__input").value;
 

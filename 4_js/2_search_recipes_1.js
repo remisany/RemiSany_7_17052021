@@ -53,6 +53,8 @@ function mainResearch() {
             displayRecipes(searchArray[i]);
         }
 
+        console.log(searchArray);
+
         if (input.length > 1) {
             searchMemory = searchArray;
         }
