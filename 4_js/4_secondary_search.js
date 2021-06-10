@@ -155,7 +155,6 @@ function updateList() {
     hideList();
 
     for (let i=0; i<searchMemory.length; i++) {
-
         let updateListIngredient = searchMemory[i].ingredients;
         for (let j=0; j<updateListIngredient.length; j++) {
             for (let k=0; k<tagsAll.length; k++) {
