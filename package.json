@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass": "sass --watch ./2_sass/main.scss:./3_css/style.css"
+    "sass": "sass --watch ./2_sass/main.scss:./3_css/style.css",
+    "test" : "...",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/remisany/RemiSany_7_17052021/issues"
   },
-  "homepage": "https://github.com/remisany/RemiSany_7_17052021#readme"
+  "homepage": "https://github.com/remisany/RemiSany_7_17052021#readme",
+  "devDependencies": {
+    "eslint": "^7.28.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "webpack": "^5.39.0",
+    "webpack-cli": "^4.7.2"
+  }
 }

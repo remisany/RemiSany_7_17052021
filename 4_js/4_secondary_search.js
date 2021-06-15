@@ -86,7 +86,7 @@ function creationListUstensil() {
 //TAGSCONTAINER
 //Ouverture list (tagsContainer)
 const list = document.querySelectorAll(".secondary-research__container");
-const typeTag = document.querySelectorAll(".secondary-research__title")
+const typeTag = document.querySelectorAll(".secondary-research__title");
 
 let index;
 let tags = document.querySelectorAll(".secondary-research__list a");
@@ -101,13 +101,13 @@ for (let i=0; i<typeTag.length; i++) {
         tags = this.parentNode.lastChild.querySelectorAll("a");
 
         for (let i=0; i<tags.length; i++) {
-            tags[i].addEventListener("click", addTag)
+            tags[i].addEventListener("click", addTag);
         }
 
         tagList = list[index].lastChild.querySelectorAll("a:not(.invisible)");
         
         for (let i=0; i<inputs.length; i++) {
-            inputs[i].addEventListener("keyup", searchList)
+            inputs[i].addEventListener("keyup", searchList);
         }
 
         //Ecoute d'un click sur la page
@@ -284,8 +284,8 @@ function searchList() {
             for (let i=0; i<searchListArray.length; i++) {
                 for (let j=0; j<tagList.length; j++) {
                     if (tagList[j].textContent === searchListArray[i].join(" ")) {
-                        tagList[j].classList.remove("invisible")
-                    };
+                        tagList[j].classList.remove("invisible");
+                    }
                 }
             }
         }

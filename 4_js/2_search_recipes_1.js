@@ -1,36 +1,33 @@
 //Construction dictionnaire
 let dictionary = [];
 for (let i=0; i<recipes.length; i++) {
-    dictionaryName = recipes[i].name.toLowerCase().split(" ");
+    let dictionaryName = recipes[i].name.toLowerCase().split(" ");
     for (let j=0; j<dictionaryName.length; j++) {
         dictionary.push({id: recipes[i].id, text: dictionaryName[j]});
     }
 
-    dictionaryDescription = recipes[i].description.toLowerCase().split(" ");
+    let dictionaryDescription = recipes[i].description.toLowerCase().split(" ");
     for (let j=0; j<dictionaryDescription.length; j++) {
         dictionary.push({id: recipes[i].id, text: dictionaryDescription[j]});
     }
 
-    /*
-    dictionaryIngredients = recipes[i].ingredients;
+    let dictionaryIngredients = recipes[i].ingredients;
     for (let j=0; j<dictionaryIngredients.length; j++) {
-        dictionaryIngredient = dictionaryIngredients[j].ingredient.toLowerCase().split(" ");
+        let dictionaryIngredient = dictionaryIngredients[j].ingredient.toLowerCase().split(" ");
         for (let k=0; k<dictionaryIngredient.length; k++) {
             dictionary.push({id: recipes[i].id, text: dictionaryIngredient[k]});
         }
-    }*/
+    }
 }
 
 //Triage par ordre alphabetique tableau nom
 dictionary.sort(function (a, b) {
     return a.text.localeCompare(b.text);
-})
-
-console.log(dictionary);
+});
 
 //Fonction de recherche par dichotomie
 function mainResearch() {
-    inputSearch = document.querySelector(".main-research__input").value;
+    let inputSearch = document.querySelector(".main-research__input").value;
 
     hideRecipes();
     searchArray = [];
@@ -38,7 +35,7 @@ function mainResearch() {
     inputSearch = inputSearch.toLowerCase();
     inputSearch = inputSearch.split(" ");
 
-    dichotomyArray = JSON.parse(JSON.stringify(dictionary));
+    let dichotomyArray = JSON.parse(JSON.stringify(dictionary));
 
     resultArray = [];
 
@@ -48,9 +45,9 @@ function mainResearch() {
             resultArray = temporaryArray;
             break;
         }
-        
+
         let result = 1;
-        temporaryArray = [];
+        let temporaryArray = [];
 
         while (result != 0) {
             let start = 0;
@@ -74,9 +71,6 @@ function mainResearch() {
                     }
                 }
             }
-
-            console.log(start);
-            console.log(end);
 
             if (dichotomyArray[start].text.startsWith(inputSearch[i])) {
                 temporaryArray.push(dichotomyArray[start].id);
@@ -129,74 +123,3 @@ function mainResearch() {
         updateList();
     }
 }
-
-/*
-let inputSearch = [];
-//Fonction de recherche principale
-function mainResearch() {
-    inputSearch = document.querySelector(".main-research__input").value;
-    let input = inputSearch.split(" ")
-
-    for (let i=0; i<input.length; i++) {
-        //Cacher recette
-        hideRecipes();
-        
-        searchArray = [];
-  
-        for (let j=0; j<searchMemory.length; j++) {
-            //Recherche par le nom
-            searchMemoryName = searchMemory[j].name.split(" ");
-            for (let k=0; k<searchMemoryName.length; k++) {
-                if(searchMemoryName[k].toLowerCase().startsWith(input[i].toLowerCase())) {
-                    searchArray.push(searchMemory[j]);
-                    break;   
-                }
-            }
-    
-            //Recherche par la description
-            searchMemoryDescription = searchMemory[j].description.split(" ");
-            for (let k=0; k<searchMemoryDescription.length; k++) {
-                if(searchMemoryDescription[k].toLowerCase().startsWith(input[i].toLowerCase())) {
-                    searchArray.push(searchMemory[j]);
-                    break;   
-                }
-            }
-    
-            //Recherche par les ingrédients
-            searchMemoryIngredients = searchMemory[j].ingredients;
-    
-            loop : for (let k=0; k<searchMemoryIngredients.length; k++) {
-                let searchMemoryIngredient = searchMemoryIngredients[k].ingredient.split(" ");
-                for (let l=0; l<searchMemoryIngredient.length; l++) {
-                    if(searchMemoryIngredient[l].toLowerCase().startsWith(input[i].toLowerCase())) {
-                        searchArray.push(searchMemory[j]);
-                        break loop;   
-                    }
-                }
-            }
-        }
-    
-        //Suppression doublon
-        searchArray = new Set(searchArray);
-        searchArray = [...searchArray];
-    
-        for (let i=0; i<searchArray.length; i++) {
-            hideError();
-            displayRecipes(searchArray[i]);
-        }
-
-        if (input.length > 1) {
-            searchMemory = searchArray;
-        }
-    }
-
-    if(searchArray.length === 0) {
-        displayError();
-        mainMemory = [];
-        hideList();
-    } else {
-        mainMemory = searchArray;
-        checkMemory();
-        updateList();
-    }
-}*/

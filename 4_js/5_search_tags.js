@@ -9,7 +9,7 @@ function secondaryResearch() {
 
         for (let j=0; j<searchMemory.length; j++) {
 
-            searchMemoryIngredients = searchMemory[j].ingredients;
+            let searchMemoryIngredients = searchMemory[j].ingredients;
             for (let k=0; k<searchMemoryIngredients.length; k++) {
                 if (searchMemoryIngredients[k].ingredient === inputTag[i].textContent) {
                     searchArray.push(searchMemory[j]);
@@ -17,16 +17,16 @@ function secondaryResearch() {
                 }
             }
 
-           if (searchMemory[j].appliance === inputTag[i].textContent) {
+            if (searchMemory[j].appliance === inputTag[i].textContent) {
                 searchArray.push(searchMemory[j]);
-           }
+            }
 
-           searchMemoryUstensils = searchMemory[j].ustensils;
-           for (let k=0; k<searchMemoryUstensils.length; k++) {
-               if (searchMemoryUstensils[k] === inputTag[i].textContent) {
-                   searchArray.push(searchMemory[j]);
-               }
-           }
+            let searchMemoryUstensils = searchMemory[j].ustensils;
+            for (let k=0; k<searchMemoryUstensils.length; k++) {
+                if (searchMemoryUstensils[k] === inputTag[i].textContent) {
+                    searchArray.push(searchMemory[j]);
+                }
+            }
 
         }
 
