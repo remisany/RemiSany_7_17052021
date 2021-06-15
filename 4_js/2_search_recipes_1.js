@@ -38,6 +38,7 @@ function mainResearch() {
     let dichotomyArray = JSON.parse(JSON.stringify(dictionary));
 
     resultArray = [];
+    let temporaryArray = [];
 
     for (let i=0; i<inputSearch.length; i++) {
         if (inputSearch[i] === "") {
@@ -47,7 +48,7 @@ function mainResearch() {
         }
 
         let result = 1;
-        let temporaryArray = [];
+        temporaryArray = [];
 
         while (result != 0) {
             let start = 0;
