@@ -5,26 +5,30 @@ const ustensilContainer = document.querySelector(".secondary-research__ustensils
 const inputs = document.querySelectorAll(".secondary-research__input");
 const tagContainer = document.querySelector(".tag__container");
 
-//INGREDIENTS
-//Création tableau de recherche "ingrédient"
+//TAGS
+//Creation of research table
 let listIngredient = [];
 let listAppliance = [];
 let listUstensil = [];
 
 for (let i=0; i<recipes.length; i++) {
+    //Ingredients
     let ingredients = recipes[i].ingredients;
     for (let j=0; j<ingredients.length; j++) {
         listIngredient.push(ingredients[j].ingredient);
     }
 
+    //Appliances
     listAppliance.push(recipes[i].appliance);
 
+    //Ustensils
     let ustensils = recipes[i].ustensils;
     for (let j=0; j<ustensils.length; j++) {
         listUstensil.push(ustensils[j]);
     }
 }
-//Suppression doublon
+
+//Duplicate deletion
 listIngredient = new Set(listIngredient);
 listIngredient = [...listIngredient];
 
@@ -34,7 +38,7 @@ listAppliance  = [...listAppliance];
 listUstensil = new Set(listUstensil);
 listUstensil  = [...listUstensil];
 
-//Creation de la liste des ingrédients
+//Creation of the list of ingredients
 creationListIngredient();
 function creationListIngredient() {
     const divListIngredient = document.createElement("div");
@@ -51,7 +55,7 @@ function creationListIngredient() {
     ingredientContainer.appendChild(divListIngredient); 
 }
 
-//APPAREIL
+//Creation of the list of appliances
 creationListAppliance();
 function creationListAppliance() {
     const divListAppliance = document.createElement("div");
@@ -67,7 +71,7 @@ function creationListAppliance() {
     applianceContainer.appendChild(divListAppliance); 
 }
 
-//USTENSIL
+//Creation of the list of ustensils
 creationListUstensil();
 function creationListUstensil() {
     const divListUstensil = document.createElement("div");
@@ -84,7 +88,7 @@ function creationListUstensil() {
 }
 
 //TAGSCONTAINER
-//Ouverture list (tagsContainer)
+//Opening list (tagsContainer)
 const list = document.querySelectorAll(".secondary-research__container");
 const typeTag = document.querySelectorAll(".secondary-research__title");
 
@@ -110,10 +114,10 @@ for (let i=0; i<typeTag.length; i++) {
             inputs[i].addEventListener("keyup", searchList);
         }
 
-        //Ecoute d'un click sur la page
+        //Listening to a click on the page
         document.addEventListener("click", click);
 
-        //Fermeture de la liste ouverte précédemment
+        //Closing the previously opened list
         for (let j=0; j<list.length; j++) {
             if (j != index) {
                 list[j].classList.remove("active");
@@ -126,7 +130,7 @@ for (let i=0; i<typeTag.length; i++) {
     });
 }
 
-//Fermeture list (tagsContainer)
+//Close list (tagsContainer)
 function closeList() {
     list[index].classList.remove("active");
     inputs[index].value = "";
@@ -135,22 +139,22 @@ function closeList() {
     secondaryResearch();
 }
 
-//MISE A JOUR DE LA LISTE
-//Masquer les ingrédients de la liste
+//LIST UPDATE
+//Hide tags from the list
 function hideList() {
     for (let i=0; i<tagsAll.length; i++) {
         tagsAll[i].classList.add("invisible");
     }
 }
 
-//Remise à 0 de la liste (afficher tous les ingrédients)
+//Resetting the list
 function resetList() {
     for (let i=0; i<tagsAll.length; i++) {
         tagsAll[i].classList.remove("invisible");
     }
 }
 
-//Mise à jour des ingrédients de la liste
+//List update
 function updateList() {
     hideList();
 
@@ -183,8 +187,8 @@ function updateList() {
     }
 }
 
-//MEMOIRE
-//Vérification mémoire
+//MEMORY
+//Memory check
 function checkMemory() {
     if (mainMemory == "") {
         searchMemory = recipes;
@@ -193,8 +197,8 @@ function checkMemory() {
     }
 }
 
-//AFFICHAGE TAGS
-//Ajout tag
+//TAGS DISPLAY
+//Add tag
 function addTag() {
     this.classList.add("invisible");
 
@@ -226,7 +230,7 @@ function addTag() {
 }
 
 
-//Suppression tag
+//Deletion tag
 function deleteTag() {
     const cross = document.querySelectorAll(".fa-times-circle");
     const tag = document.querySelectorAll(".tag");
@@ -247,15 +251,14 @@ function deleteTag() {
     }
 }
 
-//FERMETURE SI CLICK SUR PAGE
+//CLOSING IF CLICK ON PAGE
 function click(event) {
     if (!list[index].contains(event.target)) {
         closeList();
     }
 }
 
-//RECHERCHE DANS LISTE
-//Rechercher dans liste ingrédient
+//SEARCH IN LIST
 let searchListArray = [];
 let tagListArray = [];
 

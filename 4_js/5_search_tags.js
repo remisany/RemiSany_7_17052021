@@ -1,5 +1,6 @@
 let inputTag = [];
 
+//SECONDARY RESEARCH
 function secondaryResearch() {
     inputTag = document.querySelectorAll(".tag");
 
@@ -27,13 +28,12 @@ function secondaryResearch() {
                     searchArray.push(searchMemory[j]);
                 }
             }
-
         }
 
         for (let i=0; i<searchArray.length; i++) {
             displayRecipes(searchArray[i]);
         }
-    
+        
         searchMemory = searchArray;
     }
 

@@ -1,4 +1,4 @@
-//Creation des recettes
+//CREATION OF RECIPES
 for (let i=0; i<recipes.length; i++) {
     creationRecipes(recipes[i]);
 }
@@ -69,7 +69,7 @@ function creationRecipes(recipeDisplay) {
     main.appendChild(article);
 }
 
-//Creation Erreur
+//CREATION ERROR
 const main = document.querySelector(".recipe__container");
 const error = document.createElement("p");
 error.classList.add("error");
@@ -78,14 +78,14 @@ main.appendChild(error);
 
 let recipeList = document.querySelectorAll(".visible");
 
-//Rendre invisible les recettes
+//MAKE RECIPES INVISIBLE
 function hideRecipes() {
     for (let i=0; i<recipeList.length; i++) {
         recipeList[i].classList.remove("visible"); 
     }
 }
 
-//Afficher recette suite à la recherche
+//DISPLAY RECIPE FOLLOWING SEARCH
 function displayRecipes(recipeDisplay) {
     for (let i=0; i<recipeList.length; i++) {
         if (recipeList[i].classList.contains(recipeDisplay.id)) {
@@ -94,7 +94,7 @@ function displayRecipes(recipeDisplay) {
     }
 }
 
-//Remise à 0 de l'affichage recette (afficher toutes les recettes)
+//RESET RECIPE DISPLAY (DISPLAY ALL RECIPES)
 const resetRecipes = document.querySelectorAll(".visible");
 
 function resetDisplay() {
@@ -112,12 +112,12 @@ function resetDisplay() {
 }
 
 
-//Afficher erreur
+//DISPLAY ERROR
 function displayError() {
     error.classList.add("visible");
 }
 
-//Masquer erreur
+//HIDE ERROR
 function hideError() {
     error.classList.remove("visible");
 }
