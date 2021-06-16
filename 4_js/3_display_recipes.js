@@ -1,4 +1,4 @@
-//Creation des recettes
+//CREATION OF RECIPES
 for (let i=0; i<recipes.length; i++) {
     creationRecipes(recipes[i]);
 }
@@ -6,7 +6,7 @@ for (let i=0; i<recipes.length; i++) {
 function creationRecipes(recipeDisplay) {
     const main = document.querySelector(".recipe__container");
 
-	const article = document.createElement("a");
+    const article = document.createElement("a");
     article.classList.add("recipe");
     article.classList.add("visible");
     article.classList.add(recipeDisplay.id);
@@ -18,9 +18,9 @@ function creationRecipes(recipeDisplay) {
     const info = document.createElement("div");
     info.classList.add("recipe__info");
 
-	const title = document.createElement("div");
+    const title = document.createElement("div");
     title.classList.add("recipe__info__title");
-	const name = document.createElement("h2");
+    const name = document.createElement("h2");
 
     const time = document.createElement("div");
     time.classList.add("recipe__info__title__time");
@@ -30,16 +30,16 @@ function creationRecipes(recipeDisplay) {
     time.appendChild(timeIcon);
     const timeMinute = document.createElement("p");
 
-	const content = document.createElement("div");
+    const content = document.createElement("div");
     content.classList.add("recipe__info__content");
     const ingredients = document.createElement("div");
     ingredients.classList.add("recipe__info__content__ingredients");
 
-	const description = document.createElement("p");
+    const description = document.createElement("p");
     description.classList.add("recipe__info__content__description");
 	
     name.textContent = recipeDisplay.name;
-	timeMinute.textContent = recipeDisplay.time + " min";
+    timeMinute.textContent = recipeDisplay.time + " min";
 
     for (let j=0; j<recipeDisplay.ingredients.length; j++) {
         const ingredient = document.createElement("p");
@@ -48,28 +48,28 @@ function creationRecipes(recipeDisplay) {
             ingredient.innerHTML = ingredient.innerHTML + ": " + recipeDisplay.ingredients[j].quantity;
         }
         if (recipeDisplay.ingredients[j].unit != undefined) {
-                    ingredient.innerHTML  = ingredient.innerHTML  + " " + recipeDisplay.ingredients[j].unit;
+            ingredient.innerHTML  = ingredient.innerHTML  + " " + recipeDisplay.ingredients[j].unit;
         }   
         ingredients.appendChild(ingredient);
     }
 
-	description.textContent = recipeDisplay.description;
+    description.textContent = recipeDisplay.description;
     
-	title.appendChild(name);
+    title.appendChild(name);
     time.appendChild(timeMinute);
     title.appendChild(time);
-	info.appendChild(title);
+    info.appendChild(title);
 
     content.appendChild(ingredients);
     content.appendChild(description);
     info.appendChild(content);
     
-	article.appendChild(info);
+    article.appendChild(info);
 
     main.appendChild(article);
 }
 
-//Creation Erreur
+//CREATION ERROR
 const main = document.querySelector(".recipe__container");
 const error = document.createElement("p");
 error.classList.add("error");
@@ -78,23 +78,23 @@ main.appendChild(error);
 
 let recipeList = document.querySelectorAll(".visible");
 
-//Rendre invisible les recettes
+//MAKE RECIPES INVISIBLE
 function hideRecipes() {
     for (let i=0; i<recipeList.length; i++) {
-        recipeList[i].classList.remove("visible") 
+        recipeList[i].classList.remove("visible"); 
     }
 }
 
-//Afficher recette suite à la recherche
+//DISPLAY RECIPE FOLLOWING SEARCH
 function displayRecipes(recipeDisplay) {
-     for (let i=0; i<recipeList.length; i++) {
+    for (let i=0; i<recipeList.length; i++) {
         if (recipeList[i].classList.contains(recipeDisplay.id)) {
             recipeList[i].classList.add("visible");
         }
     }
 }
 
-//Remise à 0 de l'affichage recette (afficher toutes les recettes)
+//RESET RECIPE DISPLAY (DISPLAY ALL RECIPES)
 const resetRecipes = document.querySelectorAll(".visible");
 
 function resetDisplay() {
@@ -111,13 +111,12 @@ function resetDisplay() {
     }
 }
 
-
-//Afficher erreur
+//DISPLAY ERROR
 function displayError() {
     error.classList.add("visible");
 }
 
-//Masquer erreur
+//HIDE ERROR
 function hideError() {
     error.classList.remove("visible");
 }

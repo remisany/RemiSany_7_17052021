@@ -1,16 +1,17 @@
-//Ecoute les touches de la recherche principale
-const input = document.querySelector(".main-research__input")
-
+//INITIALIZATION
 let searchArray = [];
 let searchMemory = [];
-
 let mainMemory = [];
 let secondaryMemory = [];
+let inputSearch = [];
 
+//LISTENING TO KEYBOARD
+const input = document.querySelector(".main-research__input");
 input.addEventListener("keyup", function () {
 
     inputSearch = document.querySelector(".main-research__input").value;
 
+    //If secondary research exists
     if(secondaryMemory == "") {
         searchMemory = recipes;
     } else {

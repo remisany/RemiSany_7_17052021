@@ -1,18 +1,15 @@
-let inputSearch = [];
-
-//Fonction de recherche principale
+//LINEAR SEARCH FUNCTION
 function mainResearch() {
     inputSearch = document.querySelector(".main-research__input").value;
-    let input = inputSearch.split(" ")
+    let input = inputSearch.split(" ");
 
     for (let i=0; i<input.length; i++) {
-        //Cacher recette
         hideRecipes();
         
         searchArray = [];
   
         for (let j=0; j<searchMemory.length; j++) {
-            //Recherche par le nom
+            //Search by name
             searchMemoryName = searchMemory[j].name.split(" ");
             for (let k=0; k<searchMemoryName.length; k++) {
                 if(searchMemoryName[k].toLowerCase().startsWith(input[i].toLowerCase())) {
@@ -21,7 +18,7 @@ function mainResearch() {
                 }
             }
     
-            //Recherche par la description
+            //Search by description
             searchMemoryDescription = searchMemory[j].description.split(" ");
             for (let k=0; k<searchMemoryDescription.length; k++) {
                 if(searchMemoryDescription[k].toLowerCase().startsWith(input[i].toLowerCase())) {
@@ -30,7 +27,7 @@ function mainResearch() {
                 }
             }
     
-            //Recherche par les ingrédients
+            //Search by ingredients
             searchMemoryIngredients = searchMemory[j].ingredients;
     
             loop : for (let k=0; k<searchMemoryIngredients.length; k++) {
@@ -44,10 +41,11 @@ function mainResearch() {
             }
         }
     
-        //Suppression doublon
+        //Duplicate deletion
         searchArray = new Set(searchArray);
         searchArray = [...searchArray];
     
+        //Recipe display
         for (let i=0; i<searchArray.length; i++) {
             hideError();
             displayRecipes(searchArray[i]);
@@ -58,12 +56,14 @@ function mainResearch() {
         }
     }
 
+    //If the result is zero
     if(searchArray.length === 0) {
         displayError();
         mainMemory = [];
         hideList();
     } else {
         mainMemory = searchArray;
+        //Update secondary search list
         checkMemory();
         updateList();
     }
