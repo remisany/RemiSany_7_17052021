@@ -32,7 +32,7 @@
 
 ##### Requête supplémentaire :
 - Fournir 2 algorithmes pour la recherche principale. Comparer leurs performances et choisir le meilleur.
-- Argumentation du choix dans le fichier[Fiche_investigation](./Fiche_Investigation.pdf)
+- Argumentation du choix dans le fichier [Fiche d'investigation](./Fiche_Investigation.pdf)
 
 ###### Branche Algo_1
 - Recherche linéaire
