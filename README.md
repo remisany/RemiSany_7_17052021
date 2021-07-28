@@ -54,4 +54,4 @@
 ### LIENS GITHUB PAGES (Algo_3)
 https://remisany.github.io/RemiSany_7_17052021/
 
-Projet validé le X juin 2021.
+Projet validé le 23 juin 2021.
